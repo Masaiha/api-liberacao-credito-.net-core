@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 
 namespace Inst.Financeiro.WebApi.Controllers
 {
-    [ApiController]
     [Route("[controller]")]
-    public class PessoaController : ControllerBase
+    public class PessoaController : MainController
     {
         private readonly IPessoaAppService _appService;
 
@@ -21,7 +20,7 @@ namespace Inst.Financeiro.WebApi.Controllers
         {
             var pessoas = await _appService.ListarFisica(pagina, limite);
             
-            return Ok(pessoas);
+            return CustomResponse(pessoas);
         }
     }
 }
