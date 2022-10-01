@@ -1,15 +1,10 @@
+using Inst.Financeiro.Application.AutoMapper;
+using Inst.Financeiro.WebApi.Configurations;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Inst.Financeiro.WebApi
 {
@@ -22,13 +17,16 @@ namespace Inst.Financeiro.WebApi
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddAutoMapper(typeof(Startup));
+            services.AutoMapperConfigure();
+
+            services.AddDependencyInjection(Configuration);
+
+            services.AddSwaggerConfiguration();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -46,6 +44,8 @@ namespace Inst.Financeiro.WebApi
             {
                 endpoints.MapControllers();
             });
+
+            app.UseSwaggerConfig();
         }
     }
 }

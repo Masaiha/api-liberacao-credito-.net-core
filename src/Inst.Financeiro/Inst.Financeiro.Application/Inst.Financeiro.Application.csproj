@@ -5,13 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Interfaces\" />
-    <Folder Include="ViewModels\" />
-    <Folder Include="Services\" />
+    <ProjectReference Include="..\Inst.Financeiro.Domain\Inst.Financeiro.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Inst.Financeiro.Domain\Inst.Financeiro.Domain.csproj" />
+    <PackageReference Include="AutoMapper" Version="12.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
   </ItemGroup>
 
 </Project>

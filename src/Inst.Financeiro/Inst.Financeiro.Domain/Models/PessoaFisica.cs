@@ -2,6 +2,6 @@
 {
     public class PessoaFisica : Pessoa
     {
-
+        public string Rg { get; set; }
     }
 }

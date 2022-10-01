@@ -5,7 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Repositories\" />
+    <Folder Include="Context\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Inst.Financeiro.Domain\Inst.Financeiro.Domain.csproj" />
   </ItemGroup>
 
 </Project>
