@@ -4,5 +4,11 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Inst.Financeiro.Application\Inst.Financeiro.Application.csproj" />
+    <ProjectReference Include="..\Inst.Financeiro.CrossCutting\Inst.Financeiro.CrossCutting.csproj" />
+    <ProjectReference Include="..\Inst.Financeiro.Infra\Inst.Financeiro.Infra.csproj" />
+  </ItemGroup>
+
 
 </Project>
