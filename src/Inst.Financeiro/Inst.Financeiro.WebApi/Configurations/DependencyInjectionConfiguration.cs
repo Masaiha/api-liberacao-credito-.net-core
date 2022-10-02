@@ -13,12 +13,15 @@ namespace Inst.Financeiro.WebApi.Configurations
     {
         public static IServiceCollection AddDependencyInjection(this IServiceCollection services, IConfiguration configuration)
         {
+            services.AddScoped<INotificador, Notificador>();
 
-            services.AddScoped<IPessoaAppService, PessoaAppService>();
+            services.AddScoped<ICreditoAppService, CreditoAppService>();
 
-            services.AddScoped<IPessoaService, PessoaService>();
+            services.AddScoped<ICreditoService, CreditoService>();
 
-            services.AddScoped<IPessoaRepository, PessoaRepository>();
+            services.AddScoped<ICreditoRepository, CreditoRepository>();
+            services.AddScoped<ITaxaRepository, TaxaRepository>();
+            services.AddScoped<IParcelaRepository, ParcelaRepository>();
 
             return services;
         }

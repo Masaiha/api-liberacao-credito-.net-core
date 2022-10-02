@@ -1,4 +1,4 @@
 ﻿namespace Inst.Financeiro.Domain.Models
 {
-    public abstract class Entidade { }
+    public abstract class Entidade {}
 }

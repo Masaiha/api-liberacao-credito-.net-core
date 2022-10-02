@@ -8,8 +8,8 @@ namespace Inst.Financeiro.Application.AutoMapper
     {
         public ModelToViewModelProfile()
         {
-            CreateMap<PessoaFisica, PessoaFisicaViewModel>();
-            CreateMap<PessoaJuridica, PessoaJuridicaViewModel>();
+            CreateMap<CreditoViewModel, Credito>();
+            CreateMap<ParcelaViewModel, Parcela>();
         }
     }
 }

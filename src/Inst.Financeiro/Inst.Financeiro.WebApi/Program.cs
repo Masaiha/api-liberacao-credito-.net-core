@@ -1,11 +1,6 @@
+using Inst.Financeiro.Infra.Context;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Inst.Financeiro.WebApi
 {
@@ -13,6 +8,8 @@ namespace Inst.Financeiro.WebApi
     {
         public static void Main(string[] args)
         {
+            BancoDados.DadosIniciais();
+
             CreateHostBuilder(args).Build().Run();
         }
 

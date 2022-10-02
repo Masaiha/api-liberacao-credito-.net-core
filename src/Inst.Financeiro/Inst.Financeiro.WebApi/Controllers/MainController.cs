@@ -1,17 +1,21 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Inst.Financeiro.Domain.Interfaces.Services;
+using Inst.Financeiro.Domain.Models.Validacao;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Inst.Financeiro.WebApi.Controllers
 {
     [ApiController]
     public abstract class MainController : ControllerBase
     {
-        protected ICollection<string> Erros = new List<string>();
+        private readonly INotificador _notificador;
 
+        protected MainController(INotificador notificador)
+        {
+            _notificador = notificador;
+        }
 
         protected IActionResult CustomResponse(object result = null)
         {
@@ -22,7 +26,7 @@ namespace Inst.Financeiro.WebApi.Controllers
 
             return BadRequest(new ValidationProblemDetails(new Dictionary<string, string[]>
             {
-                { "Mensagens", Erros.ToArray() }
+                { "Mensagens", _notificador.ObterNotificacoesToArray() }
             }));
         }
 
@@ -32,7 +36,7 @@ namespace Inst.Financeiro.WebApi.Controllers
 
             foreach (var erro in erros)
             {
-                AdicioanrErros(erro.ErrorMessage);
+                AdicioanrErros(new Notificacao(erro.ErrorMessage));
             }
 
             return CustomResponse();
@@ -40,17 +44,13 @@ namespace Inst.Financeiro.WebApi.Controllers
 
         protected bool OperacaoValida()
         {
-            return !Erros.Any();
+            return !_notificador.TemNotificacao();
         }
 
-        protected void AdicioanrErros(string erro)
+        protected void AdicioanrErros(Notificacao notificacao)
         {
-            Erros.Add(erro);
+            _notificador.Handle(notificacao);
         }
 
-        protected void LimparErros(string erro)
-        {
-            Erros.Clear();
-        }
     }
 }

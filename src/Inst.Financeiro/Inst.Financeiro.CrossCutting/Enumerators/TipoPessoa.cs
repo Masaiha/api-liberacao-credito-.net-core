@@ -1,6 +1,6 @@
 ﻿namespace Inst.Financeiro.CrossCutting.Enumerators
 {
-    public enum TipoPessoa
+    public enum TipoCliente
     {
         PF,
         PJ
